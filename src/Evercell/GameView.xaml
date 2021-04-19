@@ -4,18 +4,28 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Evercell"
-        xmlns:menu="clr-namespace:Evercell.GameMenu"
+        xmlns:menu="clr-namespace:Evercell.Options"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Window.DataContext>
         <local:GameViewModel />
     </Window.DataContext>
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Evercell;component/Styles/Buttons.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
     <Grid>
         <StackPanel Orientation="Vertical"
                     VerticalAlignment="Bottom">
             <Button Content="{Binding ButtonText}"
-                    Command="{Binding Comm}"/>
+                    Command="{Binding Comm}"
+                    Style="{StaticResource RadiButton}"
+                    Height="30"
+                    Margin="3" />
         </StackPanel>
-        <menu:MenuView DataContext="{Binding Menu}" />
+        <menu:OptionsView DataContext="{Binding GameOptions}" />
     </Grid>
 </Window>
