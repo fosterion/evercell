@@ -13,19 +13,19 @@ namespace Evercell
     {
         public ICommand Comm => new CrystalCommand(SetSomething, () => true);
 
-        public OptionsViewModel Menu { get; private set; }
+        public OptionsViewModel GameOptions { get; private set; }
 
         public string ButtonText { get; private set; }
 
         public GameViewModel()
         {
             ButtonText = "Open game menu";
-            Menu = new OptionsViewModel();
+            GameOptions = new OptionsViewModel();
         }
 
         private void SetSomething()
         {
-            Menu.IsOpen = true;
+            GameOptions.IsOpen = true;
         }
     }
 }
