@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Evercell.Models
+namespace Evercell.Mvvm.ViewModel
 {
-    class Cell
+    class MenuViewModel
     {
-
     }
 }

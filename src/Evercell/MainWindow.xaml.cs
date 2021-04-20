@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Evercell.Options
+namespace Evercell
 {
     /// <summary>
-    /// Interaction logic for MenuView.xaml
+    /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class OptionsView : UserControl
+    public partial class MainWindow : Window
     {
-        public OptionsView()
+        public MainWindow()
         {
             InitializeComponent();
         }
