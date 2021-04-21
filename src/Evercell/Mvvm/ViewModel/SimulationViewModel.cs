@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Evercell.Mvvm.ViewModel
 {
-    class MenuViewModel
+    class SimulationViewModel : IContext
     {
     }
 }
