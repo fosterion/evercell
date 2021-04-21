@@ -9,43 +9,80 @@
         FontSize="15"
         WindowStyle="None"
         ResizeMode="NoResize"
-        WindowState="Maximized"
+        WindowState="Normal"
+        WindowStartupLocation="CenterScreen"
         Background="Transparent">
-    
+
     <Border Background="WhiteSmoke"
             CornerRadius="10">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="250"/>
                 <ColumnDefinition/>
+                <ColumnDefinition Width="100"/>
             </Grid.ColumnDefinitions>
-            <Grid>
+            <Grid Grid.Column="0">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition Height="Auto"/>
-                    <RowDefinition/>
+                    <RowDefinition Height="Auto"/>
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <TextBlock Text="Evercell"
                            FontSize="30"
+                           FontWeight="Bold"
                            HorizontalAlignment="Center"
                            VerticalAlignment="Center"/>
-                <Separator Grid.Row="0"
-                           VerticalAlignment="Bottom"
+                <Separator Grid.Row="1"
+                           VerticalAlignment="Top"
                            Width="200"
                            Background="LightGray"/>
                 <StackPanel Grid.Row="1"
                             Margin="0,10">
-                    <RadioButton Style="{StaticResource MenuButtonStyle}"
-                                 Tag="{StaticResource home}"
-                                 Content="Игра"
+                    <RadioButton Style="{StaticResource MenuButton}"
+                                 Tag="{StaticResource Icon_Home}"
+                                 Content="СИМУЛЯЦИЯ"
                                  GroupName="Menu"/>
-                    <RadioButton Style="{StaticResource MenuButtonStyle}"
-                                 Tag="{StaticResource settings}"
-                                 Content="Настройки"
+                    <RadioButton Style="{StaticResource MenuButton}"
+                                 Tag="{StaticResource Icon_Save}"
+                                 Content="СОХРАНЕНИЯ"
                                  GroupName="Menu"/>
                 </StackPanel>
+                <Separator Grid.Row="1"
+                           VerticalAlignment="Bottom"
+                           Width="200"
+                           Background="LightGray"/>
+                <Button Grid.Row="2"
+                        Style="{StaticResource SettingsButton}"
+                        Tag="{StaticResource Icon_Settings}"
+                        Content="НАСТРОЙКИ"/>
+                <Border Grid.Row="3"
+                        Grid.RowSpan="3"
+                        CornerRadius="10"
+                        Margin="20"
+                        Background="Aquamarine">
+                </Border>
+
+            </Grid>
+            <Grid Grid.Column="1"
+                  Background="#E1E4E6">
+
+            </Grid>
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Button Grid.Row="0"
+                        Style="{StaticResource ControlButton}"
+                        Tag="{StaticResource Icon_Continue}"/>
+                <Button Grid.Row="4"
+                        Style="{StaticResource ExitButton}"
+                        Tag="{StaticResource Icon_Exit}"/>
             </Grid>
         </Grid>
     </Border>
