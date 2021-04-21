@@ -4,9 +4,13 @@ Trying to implement the Game of Life completely based on MVVM pattern without an
 
 The game already has:
 - MVVM pattern supporting.
+- Modern UI without external frameworks.
+- Extendable ViewModels base.
 
 The game will include:
-- Changed parameters like speed, density, etc.
-- Logging game progress.
+- Changed simulation parameters like speed, density, etc.
+- Logging simulation progress.
 - Generation counter.
+- Dark theme.
+- Many languages.
 - Many other features; the list will continue.
