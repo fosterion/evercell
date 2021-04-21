@@ -9,9 +9,12 @@
         FontSize="15"
         WindowStyle="None"
         ResizeMode="NoResize"
-        WindowState="Normal"
         WindowStartupLocation="CenterScreen"
-        Background="Transparent">
+        Background="Transparent"
+        AllowsTransparency="True">
+    <Window.DataContext>
+        <local:MainViewModel/>
+    </Window.DataContext>
 
     <Border Background="WhiteSmoke"
             CornerRadius="10">
@@ -40,34 +43,48 @@
                            Background="LightGray"/>
                 <StackPanel Grid.Row="1"
                             Margin="0,10">
-                    <RadioButton Style="{StaticResource MenuButton}"
+                    <RadioButton Command="{Binding SwitchToHomeCommand}"
+                                 Style="{StaticResource MenuButton}"
                                  Tag="{StaticResource Icon_Home}"
-                                 Content="СИМУЛЯЦИЯ"
+                                 Content="Home"
+                                 GroupName="Menu"
+                                 IsChecked="True"/>
+                    <RadioButton Command="{Binding SwitchToSimulationCommand}"
+                                 Style="{StaticResource MenuButton}"
+                                 Tag="{StaticResource Icon_Simulation}"
+                                 Content="Simulation"
                                  GroupName="Menu"/>
                     <RadioButton Style="{StaticResource MenuButton}"
                                  Tag="{StaticResource Icon_Save}"
-                                 Content="СОХРАНЕНИЯ"
+                                 Content="Saved simulations"
                                  GroupName="Menu"/>
+                    <Button Style="{StaticResource SettingsButton}"
+                            Tag="{StaticResource Icon_Settings}"
+                            Content="Open / Close settings"/>
                 </StackPanel>
-                <Separator Grid.Row="1"
-                           VerticalAlignment="Bottom"
+                <Separator Grid.Row="2"
+                           VerticalAlignment="Top"
                            Width="200"
                            Background="LightGray"/>
-                <Button Grid.Row="2"
-                        Style="{StaticResource SettingsButton}"
-                        Tag="{StaticResource Icon_Settings}"
-                        Content="НАСТРОЙКИ"/>
                 <Border Grid.Row="3"
                         Grid.RowSpan="3"
                         CornerRadius="10"
-                        Margin="20"
-                        Background="Aquamarine">
+                        Margin="21, 10, 21, 20"
+                        Background="#E1E4E6">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                    </Grid>
                 </Border>
 
             </Grid>
             <Grid Grid.Column="1"
                   Background="#E1E4E6">
-
+                <ContentControl Margin="10"
+                                Content="{Binding CurrentContext}"/>
             </Grid>
             <Grid Grid.Column="2">
                 <Grid.RowDefinitions>
