@@ -27,7 +27,6 @@ namespace Evercell
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            // todo: remove code-behind. Make it another way.
             if (e.ChangedButton == MouseButton.Left)
                 this.DragMove();
         }

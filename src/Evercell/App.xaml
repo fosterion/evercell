@@ -22,7 +22,9 @@
             <DataTemplate DataType="{x:Type viewModel:SimulationViewModel}">
                 <view:SimulationView/>
             </DataTemplate>
-            
+
+            <BooleanToVisibilityConverter x:Key="BoolToVisibility"/>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

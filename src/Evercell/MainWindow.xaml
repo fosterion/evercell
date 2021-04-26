@@ -55,13 +55,15 @@
                                  Tag="{StaticResource Icon_Simulation}"
                                  Content="Simulation"
                                  GroupName="Menu"/>
-                    <RadioButton Style="{StaticResource MenuButton}"
+                    <RadioButton Command="{Binding SwitchToSavedCommand}"
+                                 Style="{StaticResource MenuButton}"
                                  Tag="{StaticResource Icon_Save}"
                                  Content="Saved simulations"
                                  GroupName="Menu"/>
-                    <Button Style="{StaticResource SettingsButton}"
+                    <Button Command="{Binding SwitchSettingsVisibilityCommand}"
+                            Style="{StaticResource SettingsButton}"
                             Tag="{StaticResource Icon_Settings}"
-                            Content="Open / Close settings"/>
+                            Content="{Binding SettingsText}"/>
                 </StackPanel>
                 <Separator Grid.Row="2"
                            VerticalAlignment="Top"
@@ -70,8 +72,9 @@
                 <Border Grid.Row="3"
                         Grid.RowSpan="3"
                         CornerRadius="10"
-                        Margin="21, 10, 21, 20"
-                        Background="#E1E4E6">
+                        Margin="21,10,21,20"
+                        Background="#E1E4E6"
+                        Visibility="{Binding IsSettingsOpen, Converter={StaticResource BoolToVisibility}}">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition/>
