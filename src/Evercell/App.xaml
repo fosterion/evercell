@@ -15,19 +15,25 @@
                 <ResourceDictionary Source="Style/Buttons/ExitButton.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
+            <!-- Templates -->
             <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">
                 <view:HomeView/>
             </DataTemplate>
-            
             <DataTemplate DataType="{x:Type viewModel:SimulationViewModel}">
                 <view:SimulationView/>
             </DataTemplate>
-
             <DataTemplate DataType="{x:Type viewModel:SavedViewModel}">
                 <view:SavedView/>
             </DataTemplate>
 
+            <!-- Converters -->
             <BooleanToVisibilityConverter x:Key="BoolToVisibility"/>
+
+            <!-- Dynamic colors -->
+            <SolidColorBrush x:Key="DynButtonOverlayColor"></SolidColorBrush>
+            <SolidColorBrush x:Key="DynButtonOverlayTextColor"></SolidColorBrush>
+            <SolidColorBrush x:Key="DynButtonSelectedColor"></SolidColorBrush>
+            <SolidColorBrush x:Key="DynButtonSelectedTextColor"></SolidColorBrush>
 
         </ResourceDictionary>
     </Application.Resources>

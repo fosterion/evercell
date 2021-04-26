@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Evercell"
         mc:Ignorable="d"
-        Title="Evercell" Height="600" Width="1024"
+        Height="600" Width="1024"
         FontSize="15"
         WindowStyle="None"
         ResizeMode="NoResize"
@@ -18,7 +18,7 @@
         <local:MainViewModel/>
     </Window.DataContext>
 
-    <Border Background="WhiteSmoke"
+    <Border Background="{Binding Theme.ShellColor}"
             CornerRadius="5">
         <Grid>
             <Grid.ColumnDefinitions>
@@ -38,7 +38,8 @@
                            FontSize="36"
                            FontWeight="Bold"
                            HorizontalAlignment="Center"
-                           VerticalAlignment="Center"/>
+                           VerticalAlignment="Center"
+                           Foreground="{Binding Theme.LogoTextColor}"/>
                 <Separator Grid.Row="1"
                            VerticalAlignment="Top"
                            Width="200"
@@ -88,7 +89,7 @@
 
             </Grid>
             <Grid Grid.Column="1"
-                  Background="#E1E4E6">
+                  Background="{Binding Theme.ContentColor}">
                 <ContentControl Margin="10"
                                 Content="{Binding CurrentContext}"/>
             </Grid>

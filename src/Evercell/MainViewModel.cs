@@ -1,4 +1,5 @@
 ﻿using Evercell.Core;
+using Evercell.Enums;
 using Evercell.Mvvm.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -6,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace Evercell
 {
@@ -26,6 +28,8 @@ namespace Evercell
         public SimulationViewModel Simulation { get; private set; }
 
         public SavedViewModel Saved { get; private set; }
+
+        public ThemeViewModel Theme { get; private set; }
 
         public object CurrentContext
         {
@@ -51,6 +55,8 @@ namespace Evercell
             Simulation = new SimulationViewModel();
             Saved = new SavedViewModel();
 
+            Theme = new ThemeViewModel();
+
             CurrentContext = Home;
             SettingsText = "Open settings";
         }
@@ -75,7 +81,8 @@ namespace Evercell
 
         private void Exit()
         {
-            Environment.Exit(0);
+            Theme.SwitchTo(ThemeStyle.DarkTheme);
+            //Environment.Exit(0);
         }
     }
 }
