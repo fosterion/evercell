@@ -74,6 +74,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Mvvm\View\SavedView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Mvvm\View\SimulationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -102,9 +106,13 @@
   <ItemGroup>
     <Compile Include="Mvvm\ViewModel\HomeViewModel.cs" />
     <Compile Include="Mvvm\ViewModel\IContext.cs" />
+    <Compile Include="Mvvm\ViewModel\SavedViewModel.cs" />
     <Compile Include="Mvvm\ViewModel\SimulationViewModel.cs" />
     <Compile Include="Mvvm\View\HomeView.xaml.cs">
       <DependentUpon>HomeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Mvvm\View\SavedView.xaml.cs">
+      <DependentUpon>SavedView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Mvvm\View\SimulationView.xaml.cs">
       <DependentUpon>SimulationView.xaml</DependentUpon>

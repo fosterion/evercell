@@ -11,18 +11,36 @@ namespace Evercell
 {
     class MainViewModel : ObservableObject
     {
-        public ICommand SwitchToHomeCommand => new RelayCommand(() => SwitchTo(Home), () => true);
+        public ICommand SwitchToHomeCommand => new RelayCommand(() => SwitchContextTo(Home));
 
-        public ICommand SwitchToSimulationCommand => new RelayCommand(() => SwitchTo(Simulation), () => true);
+        public ICommand SwitchToSimulationCommand => new RelayCommand(() => SwitchContextTo(Simulation));
+
+        public ICommand SwitchToSavedCommand => new RelayCommand(() => SwitchContextTo(Saved));
+
+        public ICommand SwitchSettingsVisibilityCommand => new RelayCommand(SwitchSettingsVisibility);
 
         public HomeViewModel Home { get; private set; }
 
         public SimulationViewModel Simulation { get; private set; }
 
+        public SavedViewModel Saved { get; private set; }
+
         public object CurrentContext
         {
             get => GetValue<object>(nameof(CurrentContext));
             private set => SetValue(nameof(CurrentContext), value);
+        }
+
+        public string SettingsText
+        {
+            get => GetValue<string>(nameof(SettingsText));
+            private set => SetValue(nameof(SettingsText), value);
+        }
+
+        public bool IsSettingsOpen
+        {
+            get => GetValue<bool>(nameof(IsSettingsOpen));
+            private set => SetValue(nameof(IsSettingsOpen), value);
         }
 
         public MainViewModel()
@@ -31,14 +49,25 @@ namespace Evercell
             Simulation = new SimulationViewModel();
 
             CurrentContext = Home;
+            SettingsText = "Open settings";
         }
 
-        private void SwitchTo(IContext context)
+        private void SwitchContextTo(IContext context)
         {
             if (CurrentContext != context)
             {
                 CurrentContext = context;
             }
+        }
+
+        private void SwitchSettingsVisibility()
+        {
+            IsSettingsOpen ^= true;
+
+            if (IsSettingsOpen)
+                SettingsText = "Close settings";
+            else
+                SettingsText = "Open settings";
         }
     }
 }
