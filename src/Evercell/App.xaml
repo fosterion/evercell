@@ -23,6 +23,10 @@
                 <view:SimulationView/>
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type viewModel:SavedViewModel}">
+                <view:SavedView/>
+            </DataTemplate>
+
             <BooleanToVisibilityConverter x:Key="BoolToVisibility"/>
 
         </ResourceDictionary>

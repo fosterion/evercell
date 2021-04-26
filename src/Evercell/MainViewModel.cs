@@ -19,6 +19,8 @@ namespace Evercell
 
         public ICommand SwitchSettingsVisibilityCommand => new RelayCommand(SwitchSettingsVisibility);
 
+        public ICommand ExitCommand => new RelayCommand(Exit);
+
         public HomeViewModel Home { get; private set; }
 
         public SimulationViewModel Simulation { get; private set; }
@@ -47,6 +49,7 @@ namespace Evercell
         {
             Home = new HomeViewModel();
             Simulation = new SimulationViewModel();
+            Saved = new SavedViewModel();
 
             CurrentContext = Home;
             SettingsText = "Open settings";
@@ -68,6 +71,11 @@ namespace Evercell
                 SettingsText = "Close settings";
             else
                 SettingsText = "Open settings";
+        }
+
+        private void Exit()
+        {
+            Environment.Exit(0);
         }
     }
 }
