@@ -13,21 +13,15 @@ namespace Evercell
 {
     class MainViewModel : ObservableObject
     {
-        public ICommand SwitchToHomeCommand => new RelayCommand(() => SwitchContextTo(Home));
+        private HomeViewModel _home;
+        private SimulationViewModel _sim;
+        private SavedViewModel _save;
 
-        public ICommand SwitchToSimulationCommand => new RelayCommand(() => SwitchContextTo(Simulation));
-
-        public ICommand SwitchToSavedCommand => new RelayCommand(() => SwitchContextTo(Saved));
-
+        public ICommand SwitchToHomeCommand => new RelayCommand(() => SwitchContextTo(_home));
+        public ICommand SwitchToSimulationCommand => new RelayCommand(() => SwitchContextTo(_sim));
+        public ICommand SwitchToSavedCommand => new RelayCommand(() => SwitchContextTo(_save));
         public ICommand SwitchSettingsVisibilityCommand => new RelayCommand(SwitchSettingsVisibility);
-
         public ICommand ExitCommand => new RelayCommand(Exit);
-
-        public HomeViewModel Home { get; private set; }
-
-        public SimulationViewModel Simulation { get; private set; }
-
-        public SavedViewModel Saved { get; private set; }
 
         public ThemeViewModel Theme { get; private set; }
 
@@ -51,13 +45,13 @@ namespace Evercell
 
         public MainViewModel()
         {
-            Home = new HomeViewModel();
-            Simulation = new SimulationViewModel();
-            Saved = new SavedViewModel();
+            _home = new HomeViewModel();
+            _sim = new SimulationViewModel();
+            _save = new SavedViewModel();
 
             Theme = new ThemeViewModel();
 
-            CurrentContext = Home;
+            CurrentContext = _home;
             SettingsText = "Open settings";
         }
 

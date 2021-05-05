@@ -8,5 +8,6 @@ namespace Evercell.Mvvm.ViewModel
 {
     class SimulationViewModel : IContext
     {
+
     }
 }
