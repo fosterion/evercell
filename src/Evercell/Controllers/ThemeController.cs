@@ -3,58 +3,69 @@ using Evercell.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 
-namespace Evercell.Mvvm.ViewModel
+namespace Evercell.Controllers
 {
-    class ThemeViewModel : ObservableObject
+    class ThemeController
     {
         public Brush LogoTextColor
         {
-            get => GetValue<Brush>(nameof(LogoTextColor));
-            set => SetValue(nameof(LogoTextColor), value);
+            get => GetBrush();
+            set => SetBrush(value);
         }
 
         public Brush ShellColor
         {
-            get => GetValue<Brush>(nameof(ShellColor));
-            set => SetValue(nameof(ShellColor), value);
+            get => GetBrush();
+            set => SetBrush(value);
         }
 
         public Brush ContentColor
         {
-            get => GetValue<Brush>(nameof(ContentColor));
-            set => SetValue(nameof(ContentColor), value);
+            get => GetBrush();
+            set => SetBrush(value);
         }
 
         public Brush ButtonOverlayColor
         {
-            get => (SolidColorBrush)Application.Current.Resources["DynButtonOverlayColor"];
-            set => Application.Current.Resources["DynButtonOverlayColor"] = value;
+            get => GetBrush();
+            set => SetBrush(value);
         }
 
         public Brush ButtonOverlayTextColor
         {
-            get => (SolidColorBrush)Application.Current.Resources["DynButtonOverlayTextColor"];
-            set => Application.Current.Resources["DynButtonOverlayTextColor"] = value;
+            get => GetBrush();
+            set => SetBrush(value);
         }
 
         public Brush ButtonSelectedColor
         {
-            get => (SolidColorBrush)Application.Current.Resources["DynButtonSelectedColor"];
-            set => Application.Current.Resources["DynButtonSelectedColor"] = value;
+            get => GetBrush();
+            set => SetBrush(value);
         }
 
         public Brush ButtonSelectedTextColor
         {
-            get => (SolidColorBrush)Application.Current.Resources["DynButtonSelectedTextColor"];
-            set => Application.Current.Resources["DynButtonSelectedTextColor"] = value;
+            get => GetBrush();
+            set => SetBrush(value);
         }
 
-        public ThemeViewModel()
+        private Brush GetBrush([CallerMemberName] string resource = null)
+        {
+            return (SolidColorBrush)Application.Current.Resources[resource];
+        }
+
+        private void SetBrush(Brush value, [CallerMemberName] string resource = null)
+        {
+            Application.Current.Resources[resource] = value;
+        }
+
+        public ThemeController()
         {
             SetLightTheme();
         }

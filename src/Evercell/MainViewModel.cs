@@ -1,4 +1,5 @@
-﻿using Evercell.Core;
+﻿using Evercell.Controllers;
+using Evercell.Core;
 using Evercell.Enums;
 using Evercell.Mvvm.ViewModel;
 using System;
@@ -23,24 +24,24 @@ namespace Evercell
         public ICommand SwitchSettingsVisibilityCommand => new RelayCommand(SwitchSettingsVisibility);
         public ICommand ExitCommand => new RelayCommand(Exit);
 
-        public ThemeViewModel Theme { get; private set; }
+        public ThemeController Theme { get; private set; }
 
         public object CurrentContext
         {
-            get => GetValue<object>(nameof(CurrentContext));
-            private set => SetValue(nameof(CurrentContext), value);
+            get => GetValue<object>();
+            private set => SetValue(value);
         }
 
         public string SettingsText
         {
-            get => GetValue<string>(nameof(SettingsText));
-            private set => SetValue(nameof(SettingsText), value);
+            get => GetValue<string>();
+            private set => SetValue(value);
         }
 
         public bool IsSettingsOpen
         {
-            get => GetValue<bool>(nameof(IsSettingsOpen));
-            private set => SetValue(nameof(IsSettingsOpen), value);
+            get => GetValue<bool>();
+            private set => SetValue(value);
         }
 
         public MainViewModel()
@@ -49,7 +50,7 @@ namespace Evercell
             _sim = new SimulationViewModel();
             _save = new SavedViewModel();
 
-            Theme = new ThemeViewModel();
+            Theme = new ThemeController();
 
             CurrentContext = _home;
             SettingsText = "Open settings";

@@ -30,10 +30,10 @@
             <BooleanToVisibilityConverter x:Key="BoolToVisibility"/>
 
             <!-- Dynamic colors -->
-            <SolidColorBrush x:Key="DynButtonOverlayColor"></SolidColorBrush>
-            <SolidColorBrush x:Key="DynButtonOverlayTextColor"></SolidColorBrush>
-            <SolidColorBrush x:Key="DynButtonSelectedColor"></SolidColorBrush>
-            <SolidColorBrush x:Key="DynButtonSelectedTextColor"></SolidColorBrush>
+            <SolidColorBrush x:Key="ButtonOverlayColor"></SolidColorBrush>
+            <SolidColorBrush x:Key="ButtonOverlayTextColor"></SolidColorBrush>
+            <SolidColorBrush x:Key="ButtonSelectedColor"></SolidColorBrush>
+            <SolidColorBrush x:Key="ButtonSelectedTextColor"></SolidColorBrush>
 
         </ResourceDictionary>
     </Application.Resources>

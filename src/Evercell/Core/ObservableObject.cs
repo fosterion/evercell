@@ -19,7 +19,7 @@ namespace Evercell.Core
 
         private Dictionary<string, object> _properties = new Dictionary<string, object>();
 
-        public T GetValue<T>(string propertyName, T defaultValue = default)
+        public T GetValue<T>([CallerMemberName] string propertyName = null, T defaultValue = default)
         {
             if (_properties.ContainsKey(propertyName))
                 return (T)_properties[propertyName];
@@ -27,7 +27,7 @@ namespace Evercell.Core
                 return defaultValue;
         }
 
-        public void SetValue<T>(string propertyName, T newValue)
+        public void SetValue<T>(T newValue, [CallerMemberName] string propertyName = null)
         {
             if (_properties.ContainsKey(propertyName))
             {

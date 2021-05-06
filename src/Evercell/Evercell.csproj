@@ -110,7 +110,7 @@
     <Compile Include="Mvvm\ViewModel\IContext.cs" />
     <Compile Include="Mvvm\ViewModel\SavedViewModel.cs" />
     <Compile Include="Mvvm\ViewModel\SimulationViewModel.cs" />
-    <Compile Include="Mvvm\ViewModel\ThemeViewModel.cs" />
+    <Compile Include="Controllers\ThemeController.cs" />
     <Compile Include="Mvvm\View\HomeView.xaml.cs">
       <DependentUpon>HomeView.xaml</DependentUpon>
     </Compile>
@@ -149,7 +149,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controllers\" />
     <Folder Include="Mvvm\Model\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

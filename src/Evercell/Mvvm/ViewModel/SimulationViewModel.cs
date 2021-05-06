@@ -18,8 +18,8 @@ namespace Evercell.Mvvm.ViewModel
 
         public Bitmap ImageSource
         {
-            get => GetValue<Bitmap>(nameof(ImageSource));
-            private set => SetValue(nameof(ImageSource), value);
+            get => GetValue<Bitmap>();
+            private set => SetValue(value);
         }
 
         public SimulationViewModel()
