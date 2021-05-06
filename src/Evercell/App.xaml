@@ -30,6 +30,8 @@
             <BooleanToVisibilityConverter x:Key="BoolToVisibility"/>
 
             <!-- Dynamic colors -->
+            <SolidColorBrush x:Key="LogoColor"></SolidColorBrush>
+            <SolidColorBrush x:Key="ShellColor"></SolidColorBrush>
             <SolidColorBrush x:Key="ButtonOverlayColor"></SolidColorBrush>
             <SolidColorBrush x:Key="ButtonOverlayTextColor"></SolidColorBrush>
             <SolidColorBrush x:Key="ButtonSelectedColor"></SolidColorBrush>

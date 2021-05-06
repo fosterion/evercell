@@ -14,6 +14,8 @@ namespace Evercell
 {
     class MainViewModel : ObservableObject
     {
+        private ThemeController _theme;
+
         private HomeViewModel _home;
         private SimulationViewModel _sim;
         private SavedViewModel _save;
@@ -23,8 +25,6 @@ namespace Evercell
         public ICommand SwitchToSavedCommand => new RelayCommand(() => SwitchContextTo(_save));
         public ICommand SwitchSettingsVisibilityCommand => new RelayCommand(SwitchSettingsVisibility);
         public ICommand ExitCommand => new RelayCommand(Exit);
-
-        public ThemeController Theme { get; private set; }
 
         public object CurrentContext
         {
@@ -46,11 +46,12 @@ namespace Evercell
 
         public MainViewModel()
         {
+            _theme = new ThemeController();
             _home = new HomeViewModel();
             _sim = new SimulationViewModel();
             _save = new SavedViewModel();
 
-            Theme = new ThemeController();
+            
 
             CurrentContext = _home;
             SettingsText = "Open settings";
@@ -76,7 +77,7 @@ namespace Evercell
 
         private void Exit()
         {
-            Theme.SwitchTo(ThemeStyle.DarkTheme);
+            _theme.SwitchTo(ThemeStyle.DarkTheme);
             //Environment.Exit(0);
         }
     }

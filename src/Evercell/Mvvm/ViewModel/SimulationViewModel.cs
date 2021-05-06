@@ -2,10 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
+using System.Windows.Interop;
 using System.Windows.Media.Imaging;
 
 namespace Evercell.Mvvm.ViewModel
@@ -16,9 +19,9 @@ namespace Evercell.Mvvm.ViewModel
 
         public ICommand NextStep => new RelayCommand(CreateBitmap);
 
-        public Bitmap ImageSource
+        public BitmapImage ImageSource
         {
-            get => GetValue<Bitmap>();
+            get => GetValue<BitmapImage>();
             private set => SetValue(value);
         }
 
@@ -29,9 +32,48 @@ namespace Evercell.Mvvm.ViewModel
 
         private void CreateBitmap()
         {
-            ImageSource = new Bitmap(500, 500);
-            graphics = Graphics.FromImage(ImageSource);
+            ImageSource = new BitmapImage(new Uri(@"C:\Users\Pinkman\Pictures\GameCenter\ArcheAge\ArcheAge_210314_1923.jpg", UriKind.Absolute));
+            var src = BitmapImage2Bitmap(ImageSource);
+            graphics = Graphics.FromImage(src);
             graphics.FillRectangle(Brushes.Red, 0, 0, 250, 250);
+            ImageSource = Bitmap2BitmapImage(src);
+        }
+
+        private Bitmap BitmapImage2Bitmap(BitmapImage bitmapImage)
+        {
+            using (MemoryStream outStream = new MemoryStream())
+            {
+                BitmapEncoder enc = new BmpBitmapEncoder();
+                enc.Frames.Add(BitmapFrame.Create(bitmapImage));
+                enc.Save(outStream);
+                Bitmap bitmap = new Bitmap(outStream);
+
+                return new Bitmap(bitmap);
+            }
+        }
+
+        [System.Runtime.InteropServices.DllImport("gdi32.dll")]
+        public static extern bool DeleteObject(IntPtr hObject);
+
+        private BitmapImage Bitmap2BitmapImage(Bitmap bitmap)
+        {
+            IntPtr hBitmap = bitmap.GetHbitmap();
+            BitmapImage retval;
+
+            try
+            {
+                retval = (BitmapImage)Imaging.CreateBitmapSourceFromHBitmap(
+                             hBitmap,
+                             IntPtr.Zero,
+                             Int32Rect.Empty,
+                             BitmapSizeOptions.FromEmptyOptions());
+            }
+            finally
+            {
+                DeleteObject(hBitmap);
+            }
+
+            return retval;
         }
     }
 }

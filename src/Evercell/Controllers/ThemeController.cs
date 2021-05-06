@@ -13,7 +13,7 @@ namespace Evercell.Controllers
 {
     class ThemeController
     {
-        public Brush LogoTextColor
+        public Brush LogoColor
         {
             get => GetBrush();
             set => SetBrush(value);
@@ -31,13 +31,13 @@ namespace Evercell.Controllers
             set => SetBrush(value);
         }
 
-        public Brush ButtonOverlayColor
+        public Brush ButtonHoverColor
         {
             get => GetBrush();
             set => SetBrush(value);
         }
 
-        public Brush ButtonOverlayTextColor
+        public Brush ButtonHoverTextColor
         {
             get => GetBrush();
             set => SetBrush(value);
@@ -87,24 +87,24 @@ namespace Evercell.Controllers
 
         private void SetLightTheme()
         {
-            LogoTextColor = ToSolidColorBrush("#F5F5F5");
+            LogoColor = ToSolidColorBrush("#272537");
             ShellColor = ToSolidColorBrush("#F5F5F5");
             ContentColor = ToSolidColorBrush("#E1E4E6");
-            ButtonOverlayColor = ToSolidColorBrush("#E1E4E6");
-            ButtonOverlayTextColor = new SolidColorBrush(Colors.Gray);
+            ButtonHoverColor = ToSolidColorBrush("#E1E4E6");
+            ButtonHoverTextColor = ToSolidColorBrush("#808080");
             ButtonSelectedColor = ToSolidColorBrush("#E1E4E6");
-            ButtonSelectedTextColor = new SolidColorBrush(Colors.Teal);
+            ButtonSelectedTextColor = ToSolidColorBrush("#008080");
         }
 
         private void SetDarkTheme()
         {
-            LogoTextColor = new SolidColorBrush(Colors.Teal);
+            LogoColor = ToSolidColorBrush("#008080"); // new SolidColorBrush(Colors.Teal);
             ShellColor = ToSolidColorBrush("#272537");
             ContentColor = ToSolidColorBrush("#22202F");
-            ButtonOverlayColor = ToSolidColorBrush("#22202F");
-            ButtonOverlayTextColor = new SolidColorBrush(Colors.Gray);
+            ButtonHoverColor = ToSolidColorBrush("#22202F");
+            ButtonHoverTextColor = ToSolidColorBrush("#808080");
             ButtonSelectedColor = ToSolidColorBrush("#22202F");
-            ButtonSelectedTextColor = new SolidColorBrush(Colors.Teal);
+            ButtonSelectedTextColor = ToSolidColorBrush("#008080");
         }
 
         private SolidColorBrush ToSolidColorBrush(string hexCode)

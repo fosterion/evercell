@@ -18,7 +18,7 @@
         <local:MainViewModel/>
     </Window.DataContext>
 
-    <Border Background="{Binding Theme.ShellColor}"
+    <Border Background="{DynamicResource ShellColor}"
             CornerRadius="5">
         <Grid>
             <Grid.ColumnDefinitions>
@@ -39,7 +39,7 @@
                            FontWeight="Bold"
                            HorizontalAlignment="Center"
                            VerticalAlignment="Center"
-                           Foreground="{Binding Theme.LogoTextColor}"/>
+                           Foreground="{DynamicResource LogoColor}"/>
                 <Separator Grid.Row="1"
                            VerticalAlignment="Top"
                            Width="200"
