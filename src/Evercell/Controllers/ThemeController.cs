@@ -1,11 +1,7 @@
-﻿using Evercell.Core;
-using Evercell.Enums;
+﻿using Evercell.Enums;
+using Evercell.Extensions;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 
@@ -13,6 +9,8 @@ namespace Evercell.Controllers
 {
     class ThemeController
     {
+        private ThemeStyle currentTheme;
+
         public Brush LogoColor
         {
             get => GetBrush();
@@ -70,46 +68,53 @@ namespace Evercell.Controllers
             SetLightTheme();
         }
 
-        internal void SwitchTo(ThemeStyle style)
+        internal void SwitchTheme()
         {
-            switch (style)
+            if (currentTheme is ThemeStyle.LightTheme)
             {
-                case ThemeStyle.LightTheme:
-                    SetLightTheme();
-                    break;
-                case ThemeStyle.DarkTheme:
-                    SetDarkTheme();
-                    break;
-                default:
-                    throw new NotImplementedException("Unknown theme style");
+                SetDarkTheme();
+            }
+            else
+            {
+                SetLightTheme();
             }
         }
 
         private void SetLightTheme()
         {
-            LogoColor = ToSolidColorBrush("#272537");
-            ShellColor = ToSolidColorBrush("#F5F5F5");
-            ContentColor = ToSolidColorBrush("#E1E4E6");
-            ButtonHoverColor = ToSolidColorBrush("#E1E4E6");
-            ButtonHoverTextColor = ToSolidColorBrush("#808080");
-            ButtonSelectedColor = ToSolidColorBrush("#E1E4E6");
-            ButtonSelectedTextColor = ToSolidColorBrush("#008080");
+            LogoColor = SetColor("#272537");
+            ShellColor = SetColor("#F5F5F5");
+            ContentColor = SetColor("#E1E4E6");
+            ButtonHoverColor = SetColor("#E1E4E6");
+            ButtonHoverTextColor = new SolidColorBrush(Colors.Gray);
+            ButtonSelectedColor = SetColor("#E1E4E6");
+            ButtonSelectedTextColor = SetColor(ThemeColor.Teal);
+
+            currentTheme = ThemeStyle.LightTheme;
         }
 
         private void SetDarkTheme()
         {
-            LogoColor = ToSolidColorBrush("#008080"); // new SolidColorBrush(Colors.Teal);
-            ShellColor = ToSolidColorBrush("#272537");
-            ContentColor = ToSolidColorBrush("#22202F");
-            ButtonHoverColor = ToSolidColorBrush("#22202F");
-            ButtonHoverTextColor = ToSolidColorBrush("#808080");
-            ButtonSelectedColor = ToSolidColorBrush("#22202F");
-            ButtonSelectedTextColor = ToSolidColorBrush("#008080");
+            LogoColor = SetColor(ThemeColor.Teal); // new SolidColorBrush(Colors.Teal);
+            ShellColor = SetColor("#272537");
+            ContentColor = SetColor("#22202F");
+            ButtonHoverColor = SetColor("#22202F");
+            ButtonHoverTextColor = SetColor("#808080");
+            ButtonSelectedColor = SetColor("#22202F");
+            ButtonSelectedTextColor = SetColor(ThemeColor.Teal);
+
+            currentTheme = ThemeStyle.DarkTheme;
         }
 
-        private SolidColorBrush ToSolidColorBrush(string hexCode)
+        private SolidColorBrush SetColor(string hex)
         {
-            return (SolidColorBrush)new BrushConverter().ConvertFromString(hexCode);
+            return (SolidColorBrush)new BrushConverter().ConvertFromString(hex);
+        }
+
+        private SolidColorBrush SetColor(ThemeColor color)
+        {
+            var hex = color.GetDescription();
+            return (SolidColorBrush)new BrushConverter().ConvertFromString(hex);
         }
     }
 }

@@ -30,8 +30,8 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="{DynamicResource ButtonOverlayColor}"/>
-                            <Setter Property="Foreground" Value="{DynamicResource ButtonOverlayTextColor}"/>
+                            <Setter Property="Background" Value="{DynamicResource ButtonHoverColor}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource ButtonHoverTextColor}"/>
                         </Trigger>
                         <Trigger Property="IsChecked" Value="True">
                             <Setter Property="Background" Value="{DynamicResource ButtonSelectedColor}"/>

@@ -12,7 +12,6 @@
                 <ResourceDictionary Source="Style/Buttons/MenuButton.xaml"/>
                 <ResourceDictionary Source="Style/Buttons/SettingsButton.xaml"/>
                 <ResourceDictionary Source="Style/Buttons/ControlButton.xaml"/>
-                <ResourceDictionary Source="Style/Buttons/ExitButton.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
             <!-- Templates -->
@@ -32,6 +31,7 @@
             <!-- Dynamic colors -->
             <SolidColorBrush x:Key="LogoColor"></SolidColorBrush>
             <SolidColorBrush x:Key="ShellColor"></SolidColorBrush>
+            <SolidColorBrush x:Key="ContentColor"></SolidColorBrush>
             <SolidColorBrush x:Key="ButtonOverlayColor"></SolidColorBrush>
             <SolidColorBrush x:Key="ButtonOverlayTextColor"></SolidColorBrush>
             <SolidColorBrush x:Key="ButtonSelectedColor"></SolidColorBrush>

@@ -1,6 +1,7 @@
 ﻿using Evercell.Controllers;
 using Evercell.Core;
 using Evercell.Enums;
+using Evercell.Interfaces;
 using Evercell.Mvvm.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,7 @@ namespace Evercell
         public ICommand SwitchToSimulationCommand => new RelayCommand(() => SwitchContextTo(_sim));
         public ICommand SwitchToSavedCommand => new RelayCommand(() => SwitchContextTo(_save));
         public ICommand SwitchSettingsVisibilityCommand => new RelayCommand(SwitchSettingsVisibility);
+        public ICommand SwitchThemeCommand => new RelayCommand(SwitchTheme);
         public ICommand ExitCommand => new RelayCommand(Exit);
 
         public object CurrentContext
@@ -75,10 +77,14 @@ namespace Evercell
                 SettingsText = "Open settings";
         }
 
+        private void SwitchTheme()
+        {
+            _theme.SwitchTheme();
+        }
+
         private void Exit()
         {
-            _theme.SwitchTo(ThemeStyle.DarkTheme);
-            //Environment.Exit(0);
+            Environment.Exit(0);
         }
     }
 }

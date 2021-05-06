@@ -22,8 +22,8 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="#E1E4E6"/>
-                            <Setter Property="Foreground" Value="Teal"/>
+                            <Setter Property="Background" Value="{DynamicResource ButtonSelectedColor}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource ButtonSelectedTextColor}"/>
                             <Setter Property="FontWeight" Value="SemiBold"/>
                         </Trigger>
                     </ControlTemplate.Triggers>

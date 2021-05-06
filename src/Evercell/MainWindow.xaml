@@ -89,7 +89,7 @@
 
             </Grid>
             <Grid Grid.Column="1"
-                  Background="{Binding Theme.ContentColor}">
+                  Background="{DynamicResource ContentColor}">
                 <ContentControl Margin="10"
                                 Content="{Binding CurrentContext}"/>
             </Grid>
@@ -101,12 +101,13 @@
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <Button Grid.Row="0"
+                <Button Command="{Binding SwitchThemeCommand}"
+                        Grid.Row="0"
                         Style="{StaticResource ControlButton}"
-                        Tag="{StaticResource Icon_Continue}"/>
+                        Tag="{StaticResource Icon_Mode}"/>
                 <Button Command="{Binding ExitCommand}"
                         Grid.Row="4"
-                        Style="{StaticResource ExitButton}"
+                        Style="{StaticResource ControlButton}"
                         Tag="{StaticResource Icon_Exit}"/>
             </Grid>
         </Grid>

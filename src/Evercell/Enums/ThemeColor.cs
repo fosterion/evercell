@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Evercell.Mvvm.ViewModel
+namespace Evercell.Enums
 {
-    interface IContext
+    enum ThemeColor
     {
+        [Description("#008080")]
+        Teal
     }
 }

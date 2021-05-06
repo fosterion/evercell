@@ -58,7 +58,9 @@
     </ApplicationDefinition>
     <Compile Include="Core\ObservableObject.cs" />
     <Compile Include="Core\RelayCommand.cs" />
+    <Compile Include="Enums\ThemeColor.cs" />
     <Compile Include="Enums\ThemeStyle.cs" />
+    <Compile Include="Extensions\EnumExtensions.cs" />
     <Compile Include="MainViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -88,10 +90,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Style\Buttons\ExitButton.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Style\Buttons\SettingsButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -107,7 +105,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Mvvm\ViewModel\HomeViewModel.cs" />
-    <Compile Include="Mvvm\ViewModel\IContext.cs" />
+    <Compile Include="Interfaces\IContext.cs" />
     <Compile Include="Mvvm\ViewModel\SavedViewModel.cs" />
     <Compile Include="Mvvm\ViewModel\SimulationViewModel.cs" />
     <Compile Include="Controllers\ThemeController.cs" />

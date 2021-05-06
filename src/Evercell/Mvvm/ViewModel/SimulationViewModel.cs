@@ -1,4 +1,5 @@
 ﻿using Evercell.Core;
+using Evercell.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -32,7 +33,7 @@ namespace Evercell.Mvvm.ViewModel
 
         private void CreateBitmap()
         {
-            ImageSource = new BitmapImage(new Uri(@"C:\Users\Pinkman\Pictures\GameCenter\ArcheAge\ArcheAge_210314_1923.jpg", UriKind.Absolute));
+            ImageSource = new BitmapImage(new Uri(@"", UriKind.Absolute));
             var src = BitmapImage2Bitmap(ImageSource);
             graphics = Graphics.FromImage(src);
             graphics.FillRectangle(Brushes.Red, 0, 0, 250, 250);
