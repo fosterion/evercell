@@ -6,11 +6,11 @@ The game already has:
 - MVVM pattern supporting.
 - Modern UI without external frameworks.
 - Extendable ViewModels base.
+- Dark theme.
 
 The game will include:
 - Changed simulation parameters like speed, density, etc.
 - Logging simulation progress.
 - Generation counter.
-- Dark theme.
-- Many languages.
+- Different languages.
 - Many other features; the list will continue.
