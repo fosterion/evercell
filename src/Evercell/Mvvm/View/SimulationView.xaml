@@ -11,22 +11,20 @@
         <vm:SimulationViewModel/>
     </UserControl.DataContext>
     <Grid>
-        <ItemsControl ItemsSource="{Binding Source}">
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <UniformGrid Rows="50" Columns="50"/>
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <Border BorderBrush="DarkGray" BorderThickness="1"
-                            Background="{Binding Color}" AllowDrop="True">
-                        <TextBlock VerticalAlignment="Center"
-                                   HorizontalAlignment="Center"
-                                   Background="{Binding Color}"/>
-                    </Border>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
+        <DataGrid ItemsSource="{Binding BiCells}"
+                  HeadersVisibility="None"
+                  CanUserAddRows="False"
+                  CanUserDeleteRows="False"
+                  CanUserReorderColumns="False"
+                  CanUserResizeRows="False"
+                  CanUserSortColumns="False"
+                  CanUserResizeColumns="False"
+                  Background="{Binding BiCells.IsInitialized, Converter={StaticResource BoolToColor}}">
+            <DataGrid.CellStyle>
+                <Style TargetType="DataGridCell">
+                    <Setter Property="Background" Value="{Binding Da}"/>
+                </Style>
+            </DataGrid.CellStyle>
+        </DataGrid>
     </Grid>
 </UserControl>

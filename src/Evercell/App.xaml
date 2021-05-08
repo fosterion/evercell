@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:Evercell"
              xmlns:view="clr-namespace:Evercell.Mvvm.View"
              xmlns:viewModel="clr-namespace:Evercell.Mvvm.ViewModel"
+             xmlns:convert="clr-namespace:Evercell.Converters"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
@@ -27,6 +28,7 @@
 
             <!-- Converters -->
             <BooleanToVisibilityConverter x:Key="BoolToVisibility"/>
+            <convert:BooleanToColorConverter x:Key="BoolToColor"/>
 
             <!-- Dynamic colors -->
             <SolidColorBrush x:Key="LogoColor"></SolidColorBrush>
