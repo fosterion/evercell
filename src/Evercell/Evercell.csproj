@@ -104,6 +104,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mvvm\Model\Cell.cs" />
     <Compile Include="Mvvm\ViewModel\HomeViewModel.cs" />
     <Compile Include="Interfaces\IContext.cs" />
     <Compile Include="Mvvm\ViewModel\SavedViewModel.cs" />
@@ -146,8 +147,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Mvvm\Model\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

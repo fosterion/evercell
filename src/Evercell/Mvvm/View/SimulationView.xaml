@@ -11,13 +11,22 @@
         <vm:SimulationViewModel/>
     </UserControl.DataContext>
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="30"/>
-        </Grid.RowDefinitions>
-        <Image Grid.Row="0"
-               Source="{Binding ImageSource}"/>
-        <Button Grid.Row="1"
-                Command="{Binding NextStep}"/>
+        <ItemsControl ItemsSource="{Binding Source}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Rows="50" Columns="50"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="DarkGray" BorderThickness="1"
+                            Background="{Binding Color}" AllowDrop="True">
+                        <TextBlock VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   Background="{Binding Color}"/>
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
     </Grid>
 </UserControl>
