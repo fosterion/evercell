@@ -11,20 +11,6 @@
         <vm:SimulationViewModel/>
     </UserControl.DataContext>
     <Grid>
-        <DataGrid ItemsSource="{Binding BiCells}"
-                  HeadersVisibility="None"
-                  CanUserAddRows="False"
-                  CanUserDeleteRows="False"
-                  CanUserReorderColumns="False"
-                  CanUserResizeRows="False"
-                  CanUserSortColumns="False"
-                  CanUserResizeColumns="False"
-                  Background="{Binding BiCells.IsInitialized, Converter={StaticResource BoolToColor}}">
-            <DataGrid.CellStyle>
-                <Style TargetType="DataGridCell">
-                    <Setter Property="Background" Value="{Binding Da}"/>
-                </Style>
-            </DataGrid.CellStyle>
-        </DataGrid>
+        <Image Source="{Binding VisualField}"/>
     </Grid>
 </UserControl>

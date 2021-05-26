@@ -1,6 +1,5 @@
 ﻿using Evercell.Core;
 using Evercell.Interfaces;
-using Evercell.Mvvm.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -19,66 +18,69 @@ namespace Evercell.Mvvm.ViewModel
 {
     class SimulationViewModel : ObservableObject, IContext
     {
-        public Cell[,] Cells { get; set; }
-
-        public DataView BiCells { get; set; }
+        public BitmapSource VisualField { get; set; }
 
         public SimulationViewModel()
         {
-            Cells = new Cell[25, 25];
-
-            for (int col = 0; col < 25; col++)
-            {
-                for (int row = 0; row < 25; row++)
-                {
-                    var rnd = new Random().Next(0, 1);
-
-                    if (rnd == 0)
-                    {
-                        Cells[col, row] = new Cell(true);
-                    }
-                    else
-                    {
-                        Cells[col, row] = new Cell(false);
-                    }
-                }
-            }
-
-            BiCells = GetBindable2DArray(Cells);
+            NewMethod3();
         }
 
-        public static DataView GetBindable2DArray<T>(T[,] array)
+        private void NewMethod2()
         {
-            var table = new DataTable();
-            for (var i = 0; i < array.GetLength(1); i++)
-            {
-                table.Columns.Add((i + 1).ToString(), typeof(bool))
-                             .ExtendedProperties.Add("idx", i); // Save original column index
-            }
-            for (var i = 0; i < array.GetLength(0); i++)
-            {
-                table.Rows.Add(table.NewRow());
-            }
+            double dpi = 96;
+            int width = 128;
+            int height = 128;
+            byte[] pixelData = new byte[width * height];
 
-            var view = new DataView(table);
-            for (var ri = 0; ri < array.GetLength(0); ri++)
+            for (int y = 0; y < height; y++)
             {
-                for (var ci = 0; ci < array.GetLength(1); ci++)
+                int yIndex = y * width;
+                for (int x = 0; x < width; x++)
                 {
-                    view[ri][ci] = array[ri, ci];
+                    pixelData[x + yIndex] = (byte)(x + y);
                 }
             }
 
-            // Avoids writing an 'AutogeneratingColumn' handler
-            table.ColumnChanged += (s, e) =>
+            BitmapSource bmpSource = BitmapSource.Create(width, height, dpi, dpi,
+                PixelFormats.Gray8, null, pixelData, width);
+
+            VisualField = bmpSource;
+        }
+
+        private void NewMethod3()
+        {
+            Color[,] colorArray = new Color[3, 3];
+
+            for (int i = 0; i < 3; ++i)
             {
-                var ci = (int)e.Column.ExtendedProperties["idx"]; // Retrieve original column index
-                var ri = e.Row.Table.Rows.IndexOf(e.Row); // Retrieve row index
+                colorArray[0, i] = Colors.Red;
+                colorArray[1, i] = Colors.Green;
+                colorArray[2, i] = Colors.Blue;
 
-                array[ri, ci] = (T)view[ri][ci];
-            };
+            }
+            var height = colorArray.GetUpperBound(0) + 1;
+            var width = colorArray.GetUpperBound(1) + 1;
+            var pixelFormat = PixelFormats.Bgra32;
+            var stride = width * 4; // bytes per row
 
-            return view;
+            byte[] pixelData = new byte[height * stride];
+
+            for (int y = 0; y < height; ++y)
+            {
+                for (int x = 0; x < width; ++x)
+                {
+                    var color = colorArray[y, x];
+                    var index = (y * stride) + (x * 4);
+
+                    pixelData[index] = color.B;
+                    pixelData[index + 1] = color.G;
+                    pixelData[index + 2] = color.R;
+                    pixelData[index + 3] = color.A; // color.A;
+                }
+            }
+
+            var bitmap = BitmapSource.Create(width, height, 96, 96, pixelFormat, null, pixelData, stride);
+            VisualField = bitmap;
         }
     }
 }
